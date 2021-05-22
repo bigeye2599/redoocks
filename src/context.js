@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 import reducer, { initialState } from "./reducer";
 
 const ToDosContext = createContext();
@@ -13,8 +13,13 @@ const TodosProvider = ({ children }) => {
 };
 
 export const useDispatch = () => {
-  const { dispatch } = useDispatch(TodosProvider);
+  const { dispatch } = useContext(ToDosContext);
   return dispatch;
+};
+
+export const useState = () => {
+  const { state } = useContext(ToDosContext);
+  return state;
 };
 
 export default TodosProvider;

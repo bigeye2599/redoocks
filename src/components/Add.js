@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
-import { ADD } from "./actions";
-import TodosProvider from "./context";
+import { useState } from "react";
+import { ADD } from "../actions";
+import { useDispatch } from "../context";
 
 const Add = () => {
-  const { dispatch } = useState("");
+  const [newToDo, setNewToDo] = useState("");
+  const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: ADD, payload: newToDo });
